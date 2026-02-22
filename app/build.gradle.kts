@@ -290,6 +290,9 @@ dependencies {
     // Shizuku
     implementation(libs.bundles.shizuku)
 
+    // P2P Networking - Zstd compression for content transfer
+    implementation(libs.zstd.jni)
+
     // Tests
     testImplementation(libs.bundles.test)
 

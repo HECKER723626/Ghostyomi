@@ -46,6 +46,8 @@ import eu.kanade.presentation.more.settings.widget.TextPreferenceWidget
 import eu.kanade.presentation.util.LocalBackPress
 import eu.kanade.presentation.util.Screen
 import eu.kanade.tachiyomi.ui.setting.PlayerSettingsScreen
+import eu.kanade.presentation.more.settings.screen.StorageReservationScreen
+import eu.kanade.presentation.more.settings.screen.P2PSettingsScreen
 import kotlinx.collections.immutable.persistentListOf
 import tachiyomi.i18n.MR
 import tachiyomi.i18n.aniyomi.AYMR
@@ -223,6 +225,18 @@ object SettingsMainScreen : Screen() {
             subtitleRes = MR.strings.pref_backup_summary,
             icon = Icons.Outlined.Storage,
             screen = SettingsDataScreen,
+        ),
+        Item(
+            titleRes = AYMR.strings.pref_storage_reservation,
+            subtitleRes = AYMR.strings.pref_storage_reservation_summary,
+            icon = Icons.Outlined.Storage,
+            screen = StorageReservationScreen,
+        ),
+        Item(
+            titleRes = AYMR.strings.p2p_settings,
+            subtitleRes = AYMR.strings.p2p_settings_summary,
+            icon = Icons.Outlined.Sync,
+            screen = P2PSettingsScreen,
         ),
         Item(
             titleRes = MR.strings.pref_category_security,

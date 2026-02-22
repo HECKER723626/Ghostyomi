@@ -13,6 +13,8 @@ import eu.kanade.tachiyomi.ui.player.settings.DecoderPreferences
 import eu.kanade.tachiyomi.ui.player.settings.GesturePreferences
 import eu.kanade.tachiyomi.ui.player.settings.PlayerPreferences
 import eu.kanade.tachiyomi.ui.player.settings.SubtitlePreferences
+import eu.kanade.tachiyomi.data.storage.StorageReservationPreferences
+import eu.kanade.tachiyomi.data.p2p.P2PPreferences
 import eu.kanade.tachiyomi.ui.reader.setting.ReaderPreferences
 import eu.kanade.tachiyomi.util.system.isDebugBuildType
 import tachiyomi.core.common.preference.AndroidPreferenceStore
@@ -88,6 +90,12 @@ class PreferenceModule(val app: Application) : InjektModule {
         }
         addSingletonFactory {
             BasePreferences(app, get())
+        }
+        addSingletonFactory {
+            StorageReservationPreferences(get())
+        }
+        addSingletonFactory {
+            P2PPreferences(get())
         }
     }
 }

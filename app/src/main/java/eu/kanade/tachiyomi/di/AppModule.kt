@@ -24,6 +24,9 @@ import eu.kanade.tachiyomi.data.download.manga.MangaDownloadCache
 import eu.kanade.tachiyomi.data.download.manga.MangaDownloadManager
 import eu.kanade.tachiyomi.data.download.manga.MangaDownloadProvider
 import eu.kanade.tachiyomi.data.saver.ImageSaver
+import eu.kanade.tachiyomi.data.p2p.P2PHostManager
+import eu.kanade.tachiyomi.data.p2p.P2PContentManager
+import eu.kanade.presentation.more.settings.screen.P2PSettingsScreenModel
 import eu.kanade.tachiyomi.data.track.TrackerManager
 import eu.kanade.tachiyomi.extension.anime.AnimeExtensionManager
 import eu.kanade.tachiyomi.extension.manga.MangaExtensionManager
@@ -52,6 +55,7 @@ import tachiyomi.data.handlers.manga.MangaDatabaseHandler
 import tachiyomi.domain.source.anime.service.AnimeSourceManager
 import tachiyomi.domain.source.manga.service.MangaSourceManager
 import tachiyomi.domain.storage.service.StorageManager
+import eu.kanade.tachiyomi.util.storage.StorageReservationManager
 import tachiyomi.mi.data.AnimeDatabase
 import tachiyomi.source.local.entries.anime.LocalAnimeFetchTypeManager
 import tachiyomi.source.local.image.anime.LocalAnimeBackgroundManager
@@ -224,6 +228,13 @@ class AppModule(val app: Application) : InjektModule {
         addSingletonFactory { LocalEpisodeThumbnailManager(app, get()) }
 
         addSingletonFactory { StorageManager(app, get()) }
+
+        addSingletonFactory { StorageReservationManager(app) }
+
+        // P2P Networking
+        addSingletonFactory { P2PHostManager(app, get()) }
+        addSingletonFactory { P2PContentManager(app, get(), get(), get(), get(), get()) }
+        addSingletonFactory { P2PSettingsScreenModel(app, get(), get(), get()) }
 
         addSingletonFactory { ExternalIntents() }
 
